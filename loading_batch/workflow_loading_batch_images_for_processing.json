@@ -1,0 +1,876 @@
+{
+  "last_node_id": 538,
+  "last_link_id": 1074,
+  "nodes": [
+    {
+      "id": 138,
+      "type": "LoadImage",
+      "pos": [
+        -3760,
+        -1300
+      ],
+      "size": {
+        "0": 320,
+        "1": 320
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1010
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "openpose.jpg",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 384,
+      "type": "Text box",
+      "pos": [
+        -3760,
+        -460
+      ],
+      "size": {
+        "0": 638.6298828125,
+        "1": 76.00005340576172
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1064
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Save Image Folder",
+      "properties": {
+        "Node name for S&R": "Text box"
+      },
+      "widgets_values": [
+        "Detail Inpainter\\[time(%Y-%m-%d)]\\"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 528,
+      "type": "Reroute",
+      "pos": [
+        -2840,
+        -460
+      ],
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1064
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 403,
+      "type": "Note",
+      "pos": [
+        -4140,
+        -740
+      ],
+      "size": {
+        "0": 320,
+        "1": 100
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Reset to 0 manually for a new batch \nseed is the index of the file in the folder\n\nEither do it on AutoPrompt mode (recommended if you got more then 20 files, or queue you batch according to your directory size"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 522,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -3380,
+        -780
+      ],
+      "size": {
+        "0": 260,
+        "1": 100
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 1000,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "title": "Processing File",
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "767f8a5f72fb1647dfd3546ab184746cee0699ec2177ce36f8a41cde7b9f0269.jpg"
+      ]
+    },
+    {
+      "id": 451,
+      "type": "Note",
+      "pos": [
+        -4140,
+        -1160
+      ],
+      "size": {
+        "0": 320,
+        "1": 60
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "title": "Step 1: Choose Single or Batch",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "with the switch. \nProvide a Picture or a batch image directory"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 377,
+      "type": "Load Image Batch",
+      "pos": [
+        -3760,
+        -880
+      ],
+      "size": {
+        "0": 340,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 644,
+          "widget": {
+            "name": "index"
+          },
+          "slot_index": 0
+        },
+        {
+          "name": "path",
+          "type": "STRING",
+          "link": 1066,
+          "widget": {
+            "name": "path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            1007
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "filename_text",
+          "type": "STRING",
+          "links": [
+            1000
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Load Image Batch"
+      },
+      "widgets_values": [
+        "incremental_image",
+        1,
+        "label 1",
+        "D:\\AI\\SD15local3\\outputs\\txt2img-images\\2023-10-12\\test2",
+        "*",
+        "false",
+        "true"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 379,
+      "type": "Text box",
+      "pos": [
+        -3760,
+        -600
+      ],
+      "size": {
+        "0": 638.6298828125,
+        "1": 76.00005340576172
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1066
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Load Batch from Path Folder",
+      "properties": {
+        "Node name for S&R": "Text box"
+      },
+      "widgets_values": [
+        "D:\\AI\\SD15local\\inputs\\test\\"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 534,
+      "type": "Text box",
+      "pos": [
+        -4220,
+        0
+      ],
+      "size": {
+        "0": 638.6298828125,
+        "1": 76.00005340576172
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            1070
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Load Batch from Path Folder",
+      "properties": {
+        "Node name for S&R": "Text box"
+      },
+      "widgets_values": [
+        "D:\\AI\\SD15local\\inputs\\test\\"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 532,
+      "type": "PreviewImage",
+      "pos": [
+        -3040,
+        0
+      ],
+      "size": {
+        "0": 220,
+        "1": 240
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1068
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 533,
+      "type": "Note",
+      "pos": [
+        -4220,
+        -160
+      ],
+      "size": {
+        "0": 1420,
+        "1": 100
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "title": "Version if you want to do a batch of images in one run",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Like for example with Openpose or such, you can send that IMAGES to your Controlnet"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 452,
+      "type": "Note",
+      "pos": [
+        -2520,
+        -1140
+      ],
+      "size": {
+        "0": 320,
+        "1": 60
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "title": "Step 2:  Your Workflow goes here",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Do something from here"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 531,
+      "type": "LoadImagesFromDir //Inspire",
+      "pos": [
+        -3480,
+        0
+      ],
+      "size": {
+        "0": 320,
+        "1": 140
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "directory",
+          "type": "STRING",
+          "link": 1070,
+          "widget": {
+            "name": "directory"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1068,
+            1071
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImagesFromDir //Inspire"
+      },
+      "widgets_values": [
+        "",
+        2,
+        0
+      ]
+    },
+    {
+      "id": 535,
+      "type": "Reroute",
+      "pos": [
+        -2480,
+        -1040
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1071
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 527,
+      "type": "CR Batch Process Switch",
+      "pos": [
+        -3380,
+        -920
+      ],
+      "size": {
+        "0": 260,
+        "1": 80
+      },
+      "flags": {
+        "pinned": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1010
+        },
+        {
+          "name": "image_batch",
+          "type": "IMAGE",
+          "link": 1007,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1011,
+            1065
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Single Image or Batch?",
+      "properties": {
+        "Node name for S&R": "CR Batch Process Switch"
+      },
+      "widgets_values": [
+        "image batch"
+      ],
+      "color": "#271d1c",
+      "bgcolor": "#3b3130"
+    },
+    {
+      "id": 381,
+      "type": "PreviewImage",
+      "pos": [
+        -3080,
+        -860
+      ],
+      "size": {
+        "0": 240,
+        "1": 240
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1011
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 537,
+      "type": "Image Save",
+      "pos": [
+        -2120,
+        -1400
+      ],
+      "size": {
+        "0": 320,
+        "1": 560
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1074
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Save"
+      },
+      "widgets_values": [
+        "[time(%Y-%m-%d)]",
+        "workflow",
+        "_",
+        4,
+        "false",
+        "png",
+        100,
+        "false",
+        "false",
+        "false",
+        "true",
+        "true",
+        "true"
+      ]
+    },
+    {
+      "id": 378,
+      "type": "MasqueradeIncrementer",
+      "pos": [
+        -4140,
+        -880
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            644
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MasqueradeIncrementer"
+      },
+      "widgets_values": [
+        1,
+        "increment",
+        100
+      ]
+    },
+    {
+      "id": 529,
+      "type": "Reroute",
+      "pos": [
+        -2657.5146484375,
+        -1148.40185546875
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 1065
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1073
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 538,
+      "type": "Image Resize",
+      "pos": [
+        -2380,
+        -1360
+      ],
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1073
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1074
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Resize"
+      },
+      "widgets_values": [
+        "rescale",
+        "true",
+        "lanczos",
+        0.25,
+        1024,
+        1536
+      ]
+    }
+  ],
+  "links": [
+    [
+      644,
+      378,
+      0,
+      377,
+      0,
+      "INT"
+    ],
+    [
+      1000,
+      377,
+      1,
+      522,
+      0,
+      "STRING"
+    ],
+    [
+      1007,
+      377,
+      0,
+      527,
+      1,
+      "IMAGE"
+    ],
+    [
+      1010,
+      138,
+      0,
+      527,
+      0,
+      "IMAGE"
+    ],
+    [
+      1011,
+      527,
+      0,
+      381,
+      0,
+      "IMAGE"
+    ],
+    [
+      1064,
+      384,
+      0,
+      528,
+      0,
+      "*"
+    ],
+    [
+      1065,
+      527,
+      0,
+      529,
+      0,
+      "*"
+    ],
+    [
+      1066,
+      379,
+      0,
+      377,
+      1,
+      "STRING"
+    ],
+    [
+      1068,
+      531,
+      0,
+      532,
+      0,
+      "IMAGE"
+    ],
+    [
+      1070,
+      534,
+      0,
+      531,
+      0,
+      "STRING"
+    ],
+    [
+      1071,
+      531,
+      0,
+      535,
+      0,
+      "*"
+    ],
+    [
+      1073,
+      529,
+      0,
+      538,
+      0,
+      "IMAGE"
+    ],
+    [
+      1074,
+      538,
+      0,
+      537,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Load Directory of Images (one per Queue run)",
+      "bounding": [
+        -4292,
+        -1581,
+        1553,
+        1240
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Load Batch of Images ",
+      "bounding": [
+        -4285,
+        -291,
+        1545,
+        570
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
